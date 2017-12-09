@@ -1,0 +1,82 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{chat.Route}}" cache-view="false">
+  <ion-content class="padding" ng-controller="MapCtrl">
+
+    <div ng-show="showBasics">
+      <div class="card">
+        <div class="item item-divider">
+          Static Information
+        </div>
+        <div class="item item-text-wrap" style="text-align: justify">
+          <p>
+            <b>Bus Route:</b>&emsp; &emsp;&nbsp;&nbsp;&nbsp;{{chat.Route}}
+          </p>
+          <hr>
+          <p>
+            <b>Departure Time:</b> &nbsp;{{chat.Time}}
+          </p>
+          <hr>
+          <p>
+            <b>Departure Date:</b>&emsp;{{chat.date}}&emsp;
+          </p>
+          <hr>
+          <p>
+            <b>Bus Number:</b>&emsp;&emsp;&nbsp;{{chat.Bus_Number}}
+          </p>
+          <hr>
+          <p>
+            <b>Total Distance: </b>&emsp;{{totaldistance}} km
+          </p>
+          <hr>
+          <p>
+            <b>Total Time Required: </b>{{timerequired}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="item item-divider">
+          Live Information
+        </div>
+        <div class="item item-text-wrap">
+          <b>Distance from Bus to {{destonly}} : </b>{{actualdistance}}
+          <hr>
+          <b>Time to reach {{destonly}} from Bus : </b>{{actualtimerequired}}
+          <hr>
+<!--          <div class="list">
+
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Choose bus stop to check arrival time
+              </div>
+              <select>
+                <option>Blue</option>
+                <option selected>Green</option>
+                <option>Red</option>
+              </select>
+            </label>
+
+          </div>-->
+        </div>
+      </div>
+    </div>
+    <!--<input type="button" name="closeMapBtn" value="Close Map"  ng-click="hideMap()">-->
+    <input type="button" value="View On Map" name="viewMapBtn" ng-click="hideCards()" ng-show="showMapBtn">
+    <i class="ion ion-close-round" ng-show="closeMap" ng-click="hideMap()" style="float: right"></i>
+    <br>
+      <div id="map" data-tap-disabled="true" ng-show="showMap" style="height: 100%"></div>
+  </ion-content>
+  <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        alert("The button was clicked.");
+      });
+    });
+  </script>
+</ion-view>

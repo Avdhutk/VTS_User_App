@@ -1,0 +1,32 @@
+<ion-view view-title="All Schedule" >
+  <ion-content class="padding">
+    <ion-refresher ng-controller="RefreshController">
+    pulling-text="Pull to refresh..."
+    on-refresh="doRefresh()">
+  </ion-refresher>
+    <h2>Check Bus Schedule!</h2>
+
+    <div class="bar bar-header item-input-inset">
+      <ion-icon name="search"> <input type="text" placeholder=" Search" ng-model="search.Route"
+             style="width:100%; padding-left:11px;" /></ion-icon>
+
+    </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats | filter:search | limitTo:listlength" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img src="img/bus1.png">
+        <h2>{{chat.Route}}</h2>
+        <p><b>Departure Date:&emsp;</b>{{chat.date}}</p>
+        <p><b>Departure Time:&emsp;</b>{{chat.Time}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+<!--        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>-->
+      </ion-item>
+    </ion-list>
+    <div style="text-align: center;"><h3 style="color: Black; margin-top: 50%; background-color: Red">{{connectionError}}</h3></div>
+    <ion-infinite-scroll ng-if="listlength<=friends.length"
+                         on-infinite="loadMore()" distance="3%">
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>
